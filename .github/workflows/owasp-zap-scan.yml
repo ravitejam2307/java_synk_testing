@@ -1,6 +1,6 @@
 name: OWASP ZAP Integration with GitHub Actions
 
-on: [push]
+on: workflow_dispatch #[push]
 
 jobs:
   zap_scan:
