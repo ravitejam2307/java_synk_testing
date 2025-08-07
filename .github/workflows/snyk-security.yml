@@ -50,7 +50,7 @@ jobs:
         env:
           # This is where you will need to introduce the Snyk API token created with your Snyk account
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
+          
         # Runs Snyk Code (SAST) analysis and uploads result into GitHub.
         # Use || true to not fail the pipeline
       - name: Snyk Code test
@@ -63,6 +63,8 @@ jobs:
         # Runs Snyk Infrastructure as Code (IaC) analysis and uploads result to Snyk.
         # Use || true to not fail the pipeline.
       - name: Snyk IaC test and report
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         run: snyk iac test --report || true
 
         # Build the docker image for testing
